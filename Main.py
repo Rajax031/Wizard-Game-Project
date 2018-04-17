@@ -67,6 +67,12 @@ class Game:
         self.all_sprites.draw(self.screen)
         # *after* drawing everything, flip the display
         pg.display.flip()
+        #Add background when available
+        # dungeon_background = pg.image.load()
+        # screen.blit(dungeon_background,(0,0))
+        # pg.draw.rect(screen,(255,0,0), rect)
+        
+        
 
     def show_start_screen(self):
         # game splash/start screen
