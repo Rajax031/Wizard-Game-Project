@@ -2,14 +2,17 @@
 
 import pygame as pg
 import random
-from settings import *
-from Sprites import *
+from settings import * #Imports all from settings
+from Sprites import * #Imports Sprites from Sprites.py
 
+
+#Game class, another object
 class Game:
     def __init__(self):
-        # initialize game window, etc
+        
         pg.init()
         pg.mixer.init()
+        #WIDTH and HEIGHT are constants from settings.py file, the rest if for controlling the screen
         self.screen = pg.display.set_mode((WIDTH, HEIGHT))
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
