@@ -21,7 +21,16 @@ class Spritesheet:
     return image
     
  class Player(pg.sprite.Sprite):
- 
+  def __int__(self, game):
+    pg.sprite.Sprite.__int__(self)
+    self.game = game
+    # for the following line of code, in the parentheses, use values for x, y, width, and height, which are from spritesheets
+    self.image = self.game.spritesheet.get_image(x, y, width, height)
+    self.rect = self.image.get_rect()
+    self.rect.center = (WIDTH / 2, HEIGHT / 2)
+    self.pos = vec(WIDTH / 2, HEIGHT /2)
+    self.vel = vec(0, 0)
+    self.acc = vec(0, 0)
  
  class Platform(pg.sprite.Sprite):
  
