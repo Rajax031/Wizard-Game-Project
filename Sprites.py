@@ -52,3 +52,29 @@ class Platform(pg.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+
+class Mob(pg.sprite.Sprite):
+    def __init__(self, game, plat):
+        self.groups = game.all_sprites, game.mobs
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        #self.image_up = self.game.spritesheet.get_image(x, y, w, h)
+        #self.image_up.set_colorkey(BLACK)
+        #self.image_down = self.game.spritesheet.get_image(x, y, w, h)
+        #self.image_down.set_colorkey(BLACK)
+        self.image = self.image_up
+        self.rect = self.image.get_rect()
+        self.rect.centerx = WIDTH + 100
+        self.vx = -1
+        self.rect.y = randrange(HEIGHT / 2)
+        self.vy = 0
+
+    def update(self):
+        self.acc = vec(0, 0.5)
+        self.rect.x += self.vx
+
+
+
+
+
+        
