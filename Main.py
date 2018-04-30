@@ -34,14 +34,16 @@ class Game:
     def new(self):
         # start a new game
         self.score = 0
-        self.all_sprites = pg.sprite.Group()
+        self.all_sprites = pg.sprite.LayeredUpdates()
         self.platforms = pg.sprite.Group()
+        self.mobs = pg.sprite.Group()
         self.player = Player(self)
         self.all_sprites.add(self.player)
         for plat in PLATFORM_LIST:
             p = Platform(*plat)
             self.all_sprites.add(p)
             self.platforms.add(p)
+        self.mob_timer = 0
         self.run()
 
     def run(self):
@@ -56,6 +58,17 @@ class Game:
     def update(self):
         # Game Loop - Update
         self.all_sprites.update()
+
+        # Checks to spawn a new mob
+        now = mg.time.get_ticks()
+        if now - self.mob_timer > 5000 + random.choice([-1000, -500, 0, 500, 1000]):
+            self.mob_timer = now
+            Mob(self)
+        # Checks if mob hit player
+        mob_hits = pg.sprite.spritecollide(self.player, self.mobs, False, pg.sprite.collide_mask)
+        if mob_hits:
+            # health - 1 = health
+            
         # check if player hits a platform - only when falling
         if self.player.vel.y > 0:
             hits = pg.sprite.spritecollide(self.player, self.platform, False)

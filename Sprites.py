@@ -5,6 +5,7 @@ vec = pg.math.Vector2
 
 class Player(pg.sprite.Sprite):
     def __init__(self, game):
+        self._layer = PLAYER_LAYER
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((30, 40))
         self.image.fill(YELLOW)
@@ -46,6 +47,7 @@ class Player(pg.sprite.Sprite):
 
 class Platform(pg.sprite.Sprite):
     def __init__(self, x, y, w, h):
+        self._layer = PLATFORM_LAYER
         pg.sprite.Sprite.__init__(self)
         self.image = pg.Surface((w, h ))
         self.image.fill(GREEN)
@@ -55,6 +57,7 @@ class Platform(pg.sprite.Sprite):
 
 class Mob(pg.sprite.Sprite):
     def __init__(self, game, plat):
+        self._layer = MOB_LAYER
         self.groups = game.all_sprites, game.mobs
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
@@ -72,6 +75,9 @@ class Mob(pg.sprite.Sprite):
     def update(self):
         self.acc = vec(0, 0.5)
         self.rect.x += self.vx
+        if self.rect.left > WIDTH + 100 or self.rect.right < -100:
+            self.kill()
+        #self.mask = pg.mask.from_surface(self.image)
 
 
 

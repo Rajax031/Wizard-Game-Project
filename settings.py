@@ -9,6 +9,10 @@ HS_FILE = "highscore.txt"
 # Player properties
 PLAYER_ACC = 0.5
 PLAYER_FRICTION = -0.12
+MOB_FREQ = 5000
+PLAYER_LAYER = 2
+PLATFORM_LAYER = 1
+MOB_LAYER = 2
 
 #Starting PLatforms
 PLATFORM_LIST = [(0, HEIGHT - 40, WIDTH, 40),
