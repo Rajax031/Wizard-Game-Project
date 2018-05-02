@@ -67,8 +67,8 @@ class Game:
         # Checks if mob hit player
         mob_hits = pg.sprite.spritecollide(self.player, self.mobs, False, pg.sprite.collide_mask)
         if mob_hits:
-            # health - 1 = health
-            
+            self.running = False
+
         # check if player hits a platform - only when falling
         if self.player.vel.y > 0:
             hits = pg.sprite.spritecollide(self.player, self.platform, False)
