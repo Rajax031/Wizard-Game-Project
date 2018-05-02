@@ -61,8 +61,6 @@ class Mob(pg.sprite.Sprite):
         self.groups = game.all_sprites, game.mobs
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        #self.image_up = self.game.spritesheet.get_image(x, y, w, h)
-        #self.image_up.set_colorkey(BLACK)
         #self.image_down = self.game.spritesheet.get_image(x, y, w, h)
         #self.image_down.set_colorkey(BLACK)
         self.image = self.image_up
@@ -78,9 +76,3 @@ class Mob(pg.sprite.Sprite):
         if self.rect.left > WIDTH + 100 or self.rect.right < -100:
             self.kill()
         #self.mask = pg.mask.from_surface(self.image)
-
-
-
-
-
-        
